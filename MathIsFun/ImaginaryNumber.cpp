@@ -1,5 +1,10 @@
 #include "ImaginaryNumber.h"
 
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 ImaginaryNumber::ImaginaryNumber() : ImaginaryNumber(0, 0) {
     // Left blank intentionally
 }
@@ -36,7 +41,19 @@ ImaginaryNumber ImaginaryNumber::operator-(const ImaginaryNumber& other) const {
     return ImaginaryNumber((m_real - other.m_real), (m_imaginary - other.m_imaginary));
 }
 
-ImaginaryNumber ImaginaryNumber::operator-(const ImaginaryNumber& other) const {
+ImaginaryNumber ImaginaryNumber::operator*(const ImaginaryNumber& other) const {
     return ImaginaryNumber(((m_real * other.m_real) - (m_imaginary * other.m_imaginary)), ((m_real * other.m_imaginary) + (m_imaginary * other.m_real)));
 }
 
+void ImaginaryNumber::printNumber() const {
+    if (m_real != 0) {
+        cout << m_real;
+    }
+
+    if (m_imaginary > 0) {
+        cout << '+' << m_imaginary << 'i';
+    } else if (m_imaginary < 0) {
+        cout << m_imaginary << 'i';
+    }
+    cout << endl;
+}
