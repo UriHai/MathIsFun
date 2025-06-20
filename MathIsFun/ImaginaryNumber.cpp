@@ -18,7 +18,7 @@ double ImaginaryNumber::getReal() const {
 }
 
 double ImaginaryNumber::getImaginary() const {
-    return m_real; 
+    return m_imaginary; 
 }
 
 void ImaginaryNumber::setReal(const double real) {
@@ -46,14 +46,21 @@ ImaginaryNumber ImaginaryNumber::operator*(const ImaginaryNumber& other) const {
 }
 
 void ImaginaryNumber::printNumber() const {
-    if (m_real != 0) {
+    if ((m_real != 0) || (m_real == 0 && m_imaginary == 0)) {
         cout << m_real;
     }
-
     if (m_imaginary > 0) {
-        cout << '+' << m_imaginary << 'i';
+        cout << '+';
+        if (m_imaginary != 1) {
+             cout << m_imaginary;
+        }
+         cout << 'i';
     } else if (m_imaginary < 0) {
-        cout << m_imaginary << 'i';
+        if (m_imaginary != -1) {
+            cout << m_imaginary << 'i';
+        } else {
+        cout << "-i";
+        }
     }
     cout << endl;
-}
+} 
